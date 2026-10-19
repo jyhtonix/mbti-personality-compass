@@ -2,6 +2,9 @@
 A 30-question exploration of four personality-preference dimensions commonly associated with MBTI: where you focus your energy, how you take in information, how you make decisions, and how you approach the outside world.
 
 
+To access: https://jyhtonix.github.io/mbti-personality-compass/ 
+
+
 # MBTI Personality Self-Test
 
 **Discover Your Preferences. Understand Yourself. Keep Growing.**
@@ -43,8 +46,7 @@ Results are intended for self-reflection, not definitive personality classificat
 
 ## 🚀 Getting Started
 
-1. Clone or download this repository.
-2. Open `index.html` in a modern web browser.
+1. Open `https://jyhtonix.github.io/mbti-personality-compass/` in a modern web browser.
 3. Answer all 30 questions.
 4. Review your personality result and reflection summary.
 
@@ -241,9 +243,9 @@ These nicknames are commonly used in popular personality-type descriptions. They
 
 Follow these steps to complete the self-test.
 
-### Step 1: Open the Website
+### Step 1: Open the Website 
 
-Visit the published website using a supported web browser, such as Google Chrome, Microsoft Edge, Mozilla Firefox, or Safari.
+Visit the published website https://jyhtonix.github.io/mbti-personality-compass/ using a supported web browser, such as Google Chrome, Microsoft Edge, Mozilla Firefox, or Safari.
 
 ### Step 2: Enter Your Information
 
