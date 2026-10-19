@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A free, standalone 30-question personality-preference self-reflection activity inspired by the four MBTI dimensions.">
+<title>Personality Compass — 30-Question Self-Reflection</title>
+<style>
+:root{--ink:#172033;--muted:#5d687c;--paper:#f5f7fb;--card:#fff;--line:#dfe5ef;--accent:#425bd6;--accent2:#e9edff;--good:#176b50;--shadow:0 12px 34px rgba(25,39,75,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(135deg,#202e68,#4d63d8);color:white;padding:42px 20px 36px}
+.hero{max-width:900px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.78rem;font-weight:800;opacity:.85}
+h1{font-size:clamp(2rem,5vw,3.15rem);line-height:1.08;margin:.45rem 0 1rem;letter-spacing:-.04em}
+header p{max-width:720px;color:#edf0ff;margin:.5rem 0}
+.wrap{max-width:900px;margin:26px auto;padding:0 16px 60px}.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:18px;box-shadow:var(--shadow)}
+h2{margin:.1rem 0 .65rem;font-size:1.35rem;letter-spacing:-.02em}h3{margin:0 0 .4rem;font-size:1.05rem}
+.muted{color:var(--muted)}.small{font-size:.9rem}.notice{background:#fff8e8;border:1px solid #f0dca7;border-radius:12px;padding:13px 15px;color:#634c15}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:16px}
+label.name-label{font-weight:700;display:block;margin-bottom:6px}
+input[type=text]{width:100%;max-width:420px;padding:12px 13px;border:1px solid #cbd4e4;border-radius:10px;font:inherit}
+button{border:0;border-radius:11px;padding:12px 18px;font:inherit;font-weight:750;cursor:pointer}
+.primary{background:var(--accent);color:white}.secondary{background:#eef1f7;color:#29354b}.primary:hover{filter:brightness(.94)}button:focus-visible,input:focus-visible{outline:3px solid #91a2ff;outline-offset:2px}
+.progress-row{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;color:var(--muted);margin-bottom:8px}
+.track{height:8px;background:#e8ecf4;border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:var(--accent);transition:width .2s}
+.question{padding:20px 0;border-bottom:1px solid var(--line)}.question:last-child{border-bottom:0;padding-bottom:0}
+.q-title{font-weight:750;margin:0 0 12px}.q-num{color:var(--accent);font-size:.83rem;font-weight:800;margin-right:7px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.option{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:13px;cursor:pointer;transition:.15s;background:white}
+.option:hover{border-color:#a9b5f0;background:#fafbff}.option:has(input:checked){border-color:var(--accent);background:var(--accent2)}
+.option input{margin-top:5px;accent-color:var(--accent);flex-shrink:0}.option span{display:block}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.error{color:#a12525;font-weight:700;margin-top:12px}
+#results{display:none}.type{font-size:clamp(2.3rem,8vw,4rem);letter-spacing:.06em;color:var(--accent);font-weight:900;line-height:1.1;margin:.25rem 0}.result-subtitle{font-size:1.15rem;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.dimension{border:1px solid var(--line);border-radius:13px;padding:14px}.dim-head{display:flex;justify-content:space-between;gap:8px;font-weight:800}.dim-track{height:9px;background:#edf0f6;border-radius:99px;margin:12px 0 8px;overflow:hidden}.dim-fill{height:100%;background:var(--accent);border-radius:99px}
+.tag{display:inline-block;background:#eef1ff;color:#3548a8;border-radius:999px;padding:4px 9px;font-size:.8rem;font-weight:800;margin:3px 4px 3px 0}
+.result-columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}.result-columns ul{padding-left:20px;margin-top:8px}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:12px}
+@media(max-width:600px){.panel{padding:18px}.options,.grid,.result-columns{grid-template-columns:1fr}.option{padding:12px}header{padding-top:32px}}
+@media print{body{background:white}.no-print,header{display:none!important}.wrap{max-width:none;margin:0;padding:0}.panel{box-shadow:none;break-inside:avoid}#results{display:block!important}}
+</style>
+</head>
+<body>
+<header><div class="hero"><div class="eyebrow">Student self-reflection activity</div><h1>Personality Compass</h1><p>A 30-question exploration of four personality-preference dimensions commonly associated with MBTI: where you focus your energy, how you take in information, how you make decisions, and how you approach the outside world.</p><p class="small">About 5–8 minutes · No account, API key, or internet connection required</p></div></header>
+<main class="wrap">
+<section class="panel" id="intro">
+<h2>Before you begin</h2>
+<p>Choose the option that feels <strong>more natural to you most of the time</strong>—not what you think is best, what a teacher expects, or what you can do when required. There are no right or wrong answers. If both seem true, choose the one you tend to prefer when you are relaxed.</p>
+<div class="notice small"><strong>Important:</strong> This is an educational self-reflection activity inspired by the four MBTI preference dimensions. It is <strong>not</strong> the official MBTI assessment, a clinical or psychological diagnosis, or a scientifically validated personality test. Results are indicative prompts for reflection, not fixed labels. Your preferences can vary by context and change over time.</div>
+<div style="margin-top:18px"><label class="name-label" for="studentName">Your name (optional)</label><input type="text" id="studentName" maxlength="80" placeholder="Enter your name if you wish"></div>
+<div class="controls"><button class="primary" id="startBtn">Start the 30 questions</button><span class="muted small">Your answers stay in this page and are not sent anywhere.</span></div>
+</section>
+<section class="panel" id="quiz" hidden>
+<div class="progress-row"><span id="progressText">0 of 30 answered</span><span id="progressPct">0%</span></div><div class="track" aria-label="Completion progress"><div class="bar" id="progressBar"></div></div>
+<form id="quizForm"><div id="questions"></div><div class="error" id="error" role="alert" hidden>Please answer all 30 questions before viewing your result.</div><div class="actions"><button class="primary" type="submit">See my reflection</button><button class="secondary" type="button" id="resetBtn">Start over</button></div></form>
+</section>
+<section class="panel" id="results" aria-live="polite">
+<div class="eyebrow" style="color:var(--muted)">Your reflection snapshot</div><div id="greeting" class="muted"></div><div class="type" id="typeCode">INFP</div><div class="result-subtitle" id="typeName"></div><p id="summary"></p>
+<div id="dimensions" class="grid"></div>
+<div class="result-columns"><div><h3>Possible strengths to notice</h3><ul id="strengths"></ul></div><div><h3>Areas to reflect on</h3><ul id="growth"></ul></div></div>
+<h3 style="margin-top:20px">Questions to think about</h3><ul id="reflection"></ul>
+<div class="notice small" style="margin-top:20px"><strong>Remember:</strong> A four-letter result cannot capture your whole personality, skills, values, or potential. No type is better than another. Use this as a starting point for reflection—not to judge yourself or other people, or to make important education or career decisions by type alone.</div>
+<div class="actions no-print"><button class="primary" id="printBtn" type="button">Print / Save as PDF</button><button class="secondary" id="againBtn" type="button">Retake the test</button></div>
+</section>
+<footer>Personality Compass · Independent educational resource · Not affiliated with or endorsed by The Myers-Briggs Company.</footer>
+</main>
+<script>
+"use strict";
+const questions = [
+{d:"EI",a:"I usually feel energised after spending time talking and doing activities with other people.",b:"I usually feel restored after quiet time on my own or with one or two close people."},
+{d:"SN",a:"I pay attention first to concrete facts, details, and what I can observe directly.",b:"I pay attention first to patterns, possibilities, and what things might mean in the future."},
+{d:"TF",a:"When deciding, I focus first on consistency, evidence, and whether the reasoning makes sense.",b:"When deciding, I focus first on people’s needs, values, and how the choice may affect them."},
+{d:"JP",a:"I feel more comfortable when plans, deadlines, and decisions are settled in advance.",b:"I feel more comfortable keeping options open and adapting as things develop."},
+{d:"EI",a:"I often think out loud and develop ideas through discussion.",b:"I often think things through internally before sharing my ideas."},
+{d:"SN",a:"I prefer instructions with practical examples and clear steps.",b:"I prefer understanding the overall concept, then exploring my own approach."},
+{d:"TF",a:"In a disagreement, I try to identify the most logical and impartial solution.",b:"In a disagreement, I try to understand everyone’s perspective and preserve mutual respect."},
+{d:"JP",a:"I like to complete tasks early so I can feel organised and settled.",b:"I often work in bursts and like the flexibility to change direction as I go."},
+{d:"EI",a:"In a group, I tend to contribute quickly and build on others’ ideas as we talk.",b:"In a group, I tend to observe first and contribute after I have formed my thoughts."},
+{d:"SN",a:"I trust experience and methods that have worked reliably in real situations.",b:"I enjoy experimenting with new approaches and imagining alternative possibilities."},
+{d:"TF",a:"I believe fair decisions should apply clear principles consistently, even when the outcome is uncomfortable.",b:"I believe a fair decision should consider the specific circumstances and people involved."},
+{d:"JP",a:"I prefer to use a schedule or checklist to keep track of what needs to be done.",b:"I prefer to respond to priorities as they arise rather than follow a fixed schedule."},
+{d:"EI",a:"I usually enjoy meeting new people and joining lively group activities.",b:"I usually prefer familiar company or one-to-one conversations over large gatherings."},
+{d:"SN",a:"I describe things in a specific, realistic way and notice small details.",b:"I often connect ideas, use analogies, and look for the bigger picture."},
+{d:"TF",a:"Useful feedback should be direct and focus on what can be improved.",b:"Useful feedback should be considerate and recognise how the person may receive it."},
+{d:"JP",a:"I prefer knowing the plan and what is expected of me before I begin.",b:"I prefer starting with a general direction and deciding details along the way."},
+{d:"EI",a:"When learning, I enjoy talking through ideas with classmates or a study group.",b:"When learning, I prefer quiet time to read, reflect, or practise independently first."},
+{d:"SN",a:"I am more interested in what is happening now and what can be done practically.",b:"I am more interested in what could happen and how ideas may develop."},
+{d:"TF",a:"When solving a problem, I try to separate personal feelings from the decision itself.",b:"When solving a problem, I consider personal values and the human impact alongside the facts."},
+{d:"JP",a:"I like to finish one task before moving on to another.",b:"I like to switch between tasks when inspiration or changing needs call for it."},
+{d:"EI",a:"I tend to express my enthusiasm outwardly and enjoy active participation.",b:"I tend to express enthusiasm more privately and prefer time to process experiences."},
+{d:"SN",a:"I prefer information that is specific, tested, and directly useful.",b:"I prefer information that is conceptual, imaginative, or suggests new connections."},
+{d:"TF",a:"I usually make difficult choices by weighing pros and cons against clear criteria.",b:"I usually make difficult choices by considering what feels most aligned with my values and those affected."},
+{d:"JP",a:"Unexpected changes to a plan can be frustrating because I like predictability.",b:"Unexpected changes can be exciting because I like responding in the moment."},
+{d:"EI",a:"I often find it easy to start a conversation with someone new.",b:"I often prefer that a conversation starts naturally after I have had time to get comfortable."},
+{d:"SN",a:"I would rather learn a skill by following a demonstrated method and practising it.",b:"I would rather learn a skill by exploring the principles and trying different possibilities."},
+{d:"TF",a:"In teamwork, I tend to evaluate ideas by their effectiveness and logical consistency.",b:"In teamwork, I tend to evaluate ideas by their impact on people and shared values."},
+{d:"JP",a:"I prefer having a decision made so I can move forward with a clear plan.",b:"I prefer delaying a final decision if more information or a better option may emerge."},
+{d:"EI",a:"After a busy social day, I often feel stimulated and ready for more interaction.",b:"After a busy social day, I often need downtime to recharge."},
+{d:"SN",a:"I usually explain an idea by describing what it is and how it works in practice.",b:"I usually explain an idea by describing what it could lead to or why it matters more broadly."}
+];
+const dimensions = {
+ EI:{left:"E",right:"I",leftName:"Extraversion",rightName:"Introversion",desc:"Where you tend to direct and restore your energy"},
+ SN:{left:"S",right:"N",leftName:"Sensing",rightName:"Intuition",desc:"How you tend to notice and interpret information"},
+ TF:{left:"T",right:"F",leftName:"Thinking",rightName:"Feeling",desc:"What you tend to prioritise when making decisions"},
+ JP:{left:"J",right:"P",leftName:"Judging",rightName:"Perceiving",desc:"How you tend to approach plans and the outside world"}
+};
+const profiles = {
+ ISTJ:["The Organiser","Practical, careful, and dependable; often values clarity, responsibility, and proven methods.","reliability and follow-through","allowing room for change or less structured approaches","Which routines help me do my best work?","When might a new approach be worth trying?"],
+ ISFJ:["The Supporter","Attentive and considerate; often notices practical needs and values helping in reliable ways.","care, observation, and consistency","stating personal needs and adapting when plans change","How do I support others while caring for myself?","When should I say no or ask for help?"],
+ INFJ:["The Insight-Seeker","Reflective and purpose-driven; often looks for meaning, connections, and ways to support growth.","insight, commitment, and empathy","checking assumptions and making broad plans actionable","What values guide the goals I choose?","How can I test my interpretations against evidence?"],
+ INTJ:["The Strategist","Independent and future-focused; often enjoys analysing systems and planning improvements.","strategic thinking and independence","making space for others’ input and near-term details","How can I turn a long-term idea into steps?","What might other people see that I have missed?"],
+ ISTP:["The Troubleshooter","Observant and adaptable; often enjoys understanding how things work and solving practical problems.","calm problem-solving and flexibility","communicating plans or feelings before others need to ask","What hands-on challenges keep me engaged?","How can I share my thinking with teammates sooner?"],
+ ISFP:["The Creator","Gentle and observant; often values personal authenticity, practical experience, and individual expression.","sensitivity, adaptability, and creativity","making longer-term plans and speaking up assertively","Which activities feel most authentic to me?","How can I express my needs more clearly?"],
+ INFP:["The Idealist","Imaginative and values-led; often seeks meaning, authenticity, and alignment between actions and beliefs.","empathy, imagination, and personal values","breaking ideas into concrete steps and handling conflict directly","What values do I want my daily actions to reflect?","What is one small practical step I can take now?"],
+ INTP:["The Analyst","Curious and analytical; often enjoys exploring theories, questions, and how ideas fit together.","analysis, curiosity, and independent thinking","finishing tasks and explaining ideas in accessible ways","Which questions make me curious enough to keep learning?","How can I turn analysis into a useful outcome?"],
+ ESTP:["The Doer","Energetic and pragmatic; often learns through action and responds quickly to what is happening.","resourcefulness, action, and adaptability","pausing to consider long-term consequences","When do I learn best by trying things out?","What could happen if I pause before acting?"],
+ ESFP:["The Energiser","Sociable and responsive; often enjoys shared experiences, practical action, and bringing warmth to a group.","enthusiasm, connection, and responsiveness","planning ahead and staying focused on less exciting tasks","What kind of group environment helps me thrive?","What simple system could help me meet future deadlines?"],
+ ENFP:["The Explorer","Enthusiastic and imaginative; often enjoys possibilities, people, and connecting ideas.","curiosity, creativity, and encouragement","prioritising ideas and following through consistently","Which possibilities are most important to me right now?","How can I choose one idea and complete it?"],
+ ENTP:["The Challenger","Inventive and questioning; often enjoys debating ideas, spotting alternatives, and solving novel problems.","innovation, quick thinking, and perspective-shifting","considering emotional impact and completing routine work","How do I use questions to improve an idea?","How can I challenge an idea without dismissing a person?"],
+ ESTJ:["The Coordinator","Direct and organised; often values clear goals, practical results, and dependable processes.","organisation, decisiveness, and accountability","remaining open to different working styles and new information","How do I help a group move towards a clear goal?","When could listening longer improve my decision?"],
+ ESFJ:["The Connector","Warm and organised; often values cooperation, shared expectations, and practical support.","collaboration, responsibility, and consideration","handling disagreement and making independent choices when needed","How do I help people feel included?","How can I disagree respectfully when I see things differently?"],
+ ENFJ:["The Encourager","Engaged and people-focused; often enjoys helping a group grow towards a shared purpose.","communication, encouragement, and coordination","setting boundaries and making space for personal priorities","How do I encourage others without taking on everything?","What responsibility can I reasonably let go of?"],
+ ENTJ:["The Director","Strategic and decisive; often enjoys organising resources and moving towards ambitious goals.","leadership, planning, and decisive action","slowing down to hear concerns and revise a plan","How can I turn a shared goal into coordinated action?","Whose perspective should I seek before deciding?"]
+};
+const $=id=>document.getElementById(id);
+function renderQuestions(){
+  $("questions").innerHTML=questions.map((q,i)=>`<div class="question"><p class="q-title"><span class="q-num">Q${i+1}.</span>Which statement feels more natural to you?</p><div class="options"><label class="option"><input type="radio" name="q${i}" value="a"><span>${q.a}</span></label><label class="option"><input type="radio" name="q${i}" value="b"><span>${q.b}</span></label></div></div>`).join("");
+}
+function updateProgress(){
+ const n=questions.filter((q,i)=>document.querySelector(`input[name="q${i}"]:checked`)).length;
+ $("progressText").textContent=`${n} of ${questions.length} answered`; $("progressPct").textContent=`${Math.round(n/questions.length*100)}%`; $("progressBar").style.width=`${n/questions.length*100}%`;
+}
+function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+$("startBtn").addEventListener("click",()=>{$("intro").hidden=true;$("quiz").hidden=false;window.scrollTo({top:0,behavior:"smooth"});});
+$("questions").addEventListener("change",updateProgress);
+$("resetBtn").addEventListener("click",()=>{if(confirm("Clear your answers and start over?")){ $("quizForm").reset();updateProgress();$("error").hidden=true;window.scrollTo({top:0,behavior:"smooth"});}});
+$("quizForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const missing=questions.findIndex((q,i)=>!document.querySelector(`input[name="q${i}"]:checked`));
+ if(missing!==-1){$("error").hidden=false;document.querySelector(`input[name="q${missing}"]`).focus();document.querySelectorAll(".question")[missing].scrollIntoView({behavior:"smooth",block:"center"});return;}
+ $("error").hidden=true;
+ const scores={EI:0,SN:0,TF:0,JP:0}, totals={EI:0,SN:0,TF:0,JP:0};
+ questions.forEach((q,i)=>{totals[q.d]++;if(document.querySelector(`input[name="q${i}"]:checked`).value==="a")scores[q.d]++;});
+ let code="",dimsHtml="";
+ Object.keys(dimensions).forEach(k=>{
+   const d=dimensions[k], a=scores[k], b=totals[k]-a, leftWins=a>=b, letter=leftWins?d.left:d.right;
+   code+=letter;
+   const max=Math.max(a,b), pct=Math.round(max/totals[k]*100), strength=Math.abs(a-b);
+   dimsHtml+=`<div class="dimension"><div class="dim-head"><span>${d.left} · ${d.leftName}</span><span>${a}/${totals[k]}</span></div><div class="dim-track"><div class="dim-fill" style="width:${Math.round(a/totals[k]*100)}%"></div></div><div class="dim-head"><span>${d.right} · ${d.rightName}</span><span>${b}/${totals[k]}</span></div><div class="dim-track"><div class="dim-fill" style="width:${Math.round(b/totals[k]*100)}%"></div></div><p class="small muted">${d.desc}.</p><span class="tag">${letter} preference</span> <span class="small muted">${strength===0?"Even split":strength===1?"Very slight lean":strength<=2?"Slight lean":strength<=4?"Moderate lean":"Clearer lean"} in these answers</span></div>`;
+ });
+ const p=profiles[code];
+ $("greeting").textContent=$("studentName").value.trim()?`A reflection snapshot for ${$("studentName").value.trim()}`:"Your answers suggest this possible preference pattern";
+ $("typeCode").textContent=code;$("typeName").textContent=p[0];$("summary").textContent=p[1];$("dimensions").innerHTML=dimsHtml;
+ $("strengths").innerHTML=p[2].split(", ").map(x=>`<li>${esc(x.charAt(0).toUpperCase()+x.slice(1))}</li>`).join("");
+ $("growth").innerHTML=p[3].split(" and ").map(x=>`<li>${esc(x.charAt(0).toUpperCase()+x.slice(1))}</li>`).join("");
+ $("reflection").innerHTML=[p[4],p[5],"Does this description fit me in different settings, such as study, work, home, and friendships?"].map(x=>`<li>${esc(x)}</li>`).join("");
+ $("quiz").hidden=true;$("results").style.display="block";window.scrollTo({top:0,behavior:"smooth"});
+});
+$("againBtn").addEventListener("click",()=>{ $("results").style.display="none";$("quiz").hidden=false;$("quizForm").reset();updateProgress();window.scrollTo({top:0,behavior:"smooth"});});
+$("printBtn").addEventListener("click",()=>window.print());
+renderQuestions();updateProgress();
+</script>
+</body>
+</html>
