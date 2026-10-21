@@ -352,5 +352,10 @@ A productive discussion focuses on how team members can work together more effec
 
 Self-awareness is an ongoing process. Use the test as one of many opportunities to reflect, receive feedback, explore new perspectives, and develop practical skills.
 
+### Infographics
+
+![Project Screenshot](https://raw.githubusercontent.com/jythtonix/mbti-personality-compass/main/Temperament_test_image.jpeg)
+
+
 ---
 
