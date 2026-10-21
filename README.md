@@ -354,7 +354,7 @@ Self-awareness is an ongoing process. Use the test as one of many opportunities 
 
 ### Infographics
 
-![Project Screenshot](https://raw.githubusercontent.com/jythtonix/mbti-personality-compass/main/Temperament_test_image.jpeg)
+![Project Screenshot](https://raw.githubusercontent.com/jyhtonix/mbti-personality-compass/main/Temperament_test_image.jpeg)
 
 
 ---
